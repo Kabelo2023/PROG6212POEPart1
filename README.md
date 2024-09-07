@@ -1,59 +1,62 @@
 1. Purpose of the Application:
-The goal of this application is to help Monash University track and organize various campus events. It allows users to filter events by department, view event details, and perform actions like registering for events, notifying students, and fetching data from external sources. This WPF application is designed to be user-friendly and provides a simple interface for managing campus activities.
+This application's objective is to assist Monash University in planning and monitoring a variety of campus activities. Users can register for events, inform students, retrieve data from outside sources, and examine event details in addition to filtering events by department. This WPF application offers a straightforward interface for controlling campus activities and is made to be user-friendly.
 
-2. Key Features:
-Event Filtering: Users can filter the list of events by department (e.g., Science, Arts, Engineering). This filtering is implemented using LINQ, which allows for efficient querying and filtering of the event list based on the selected department.
+2. Important characteristics:
+Event Filtering: The list of events can be filtered by department (such as science, arts, or engineering). LINQ is used to achieve this filtering, making it possible to efficiently query and filter the event list according to the department of choice.
 
-Event Display: The events are displayed in a ListView control with columns for the event name, date, type, and department. The ListView provides a clean and organized way to display the list of events, making it easy for users to browse through them.
+Event Display: A ListView control including columns for the event name, date, kind, and department is used to display the events. The ListView makes it simple for visitors to browse through the events by displaying the list in an orderly and streamlined manner.
 
-Event Details Section: When a user selects an event from the list, the details of that event (name, date, type, department) are displayed in a dedicated section on the right side of the window. This gives the user more information about the event without cluttering the main event list.
+Event Details Section: The name, date, kind, and department of an event are shown in a section on the right side of the window when a user chooses it from the list. This expands the user's knowledge about the event without overcrowding the primary list of events.
+
 
 User Actions:
 
-Register for Event: A button allows users to register for an event. Although the logic for event registration is currently simulated with a simple message box, it can be expanded to handle actual registration processes.
-Notify Students: This button triggers the notification of students about an event. The notification process runs asynchronously in a separate thread, ensuring that the UI remains responsive while notifications are being sent.
-Fetch External Data: This button initiates the fetching of event data from external sources. The data fetching is done asynchronously, simulating integration with external services like event feeds or calendar services.
+Register for Event: Users can sign up for an event by clicking on a button. The logic for event registration can be extended to accommodate real registration processes, even if it is currently emulated with a straightforward message box.
+Notify Students: Pressing this button causes students to be informed about an upcoming event. The user interface stays responsive while notifications are being issued since the notification mechanism operates asynchronously on a different thread.
+Fetch External Data: Pressing this button starts the process of obtaining event data from outside sources. Asynchronous data fetching simulates integration with third-party services, such as calendar or event feeds.
+
 
 3. WPF Components Used:
-Window and Grid: The main window of the application (MainWindow.xaml) is built using a Grid layout, which allows for flexible arrangement of UI elements. The grid organizes the title, filter section, event list, and action buttons.
+Window and Grid: A Grid layout was used in the construction of the application's main window (MainWindow.xaml), allowing for variable UI element configuration. The header, filter section, event list, and action buttons are arranged in a grid format.
 
-TextBlock: Used for displaying static text, such as the title of the application and the labels for event details.
+TextBlock: Used to show static text, such as the application's title and the labels containing event information.
 
-ComboBox: Allows users to select a department for filtering events. The selection change event triggers the filtering process.
+ComboBox: Enables users to filter events by department. The filtering procedure is started by the selection change event.
 
-ListView: Displays the list of events in a table-like format. Each column corresponds to a property of the event, such as name, date, type, and department.
+ListView: Provides a table-like format for the list of events. A attribute of the event, such as name, date, type, and department, is correlated with each column.
 
-StackPanel: Used to group UI elements vertically or horizontally. In this application, StackPanel is used for arranging the filter section, event details, and buttons.
+StackPanel: Used to arrange UI components either horizontally or vertically. StackPanel is used in this application to organize the buttons, event details, and filter section.
 
-Buttons: These provide interactive functionality, such as registering for events, notifying students, and fetching external data.
+Buttons: These offer interactive features including event registration, student notifications, and data retrieval from outside sources.
 
 4. Functional Logic:
-Event Filtering: When a department is selected in the ComboBox, the DepartmentFilter_SelectionChanged method is called. This method filters the events based on the selected department using LINQ and updates the ListView to display only the relevant events.
+Event Filtering: The DepartmentFilter_SelectionChanged function is called when a department is chosen in the ComboBox. Using LINQ, this function filters the events according to the department that has been selected, updating the ListView to show only the pertinent events.
 
-Event Selection: When a user selects an event from the ListView, the EventListView_SelectionChanged method is triggered. This method extracts the selected event's details and displays them in the event details section.
+Event Selection: The EventListView_SelectionChanged function is called when a user chooses an event from the ListView. The details of the selected event are extracted by this approach and are shown in the event information section.
 
-Multithreading for Notifications: The NotifyStudents_Click method runs the notification process on a separate thread using Task.Run. This ensures that the UI remains responsive while notifications are being sent.
+Notification Multithreading: The NotifyStudents_Click function uses Task to conduct the notification procedure on a different thread.Hurry. This guarantees that when notifications are being issued, the user interface stays responsive.
 
-Asynchronous Data Fetching: The FetchExternalData_Click method initiates the fetching of external event data using the FetchEventDataAsync method. This method simulates retrieving data asynchronously, allowing the application to integrate with external sources without blocking the main UI thread.
+Asynchronous Data Fetching: The FetchEventDataAsync method is used by the FetchExternalData_Click function to start the fetching of external event data. By simulating asynchronous data retrieval, this technique enables the program to integrate with external sources without obstructing the primary user interface thread.
 
 5. Potential Enhancements:
-Styling: The application can be enhanced with custom styles and themes to make the UI more visually appealing.
-Data Persistence: Currently, the event data is hardcoded. You can connect the application to a database to store and retrieve event data persistently.
-User Authentication: Add user authentication and role-based access control, so different users (e.g., students, faculty) have different permissions within the system.
-Event Registration: Implement a more robust registration system that tracks which users have registered for which events.
+Styling: To improve the application's visual attractiveness, unique themes and styles can be added.
+Data Persistence: The event data is hardcoded at the moment. The program can be linked to a database so that event data can be consistently stored and retrieved.
+User Authentication: Provide role-based access control and user authentication so that various users (teachers, students, etc.) have varying permissions within the system.
+Event Registration: Put in place a more capable system that keeps track of which users have signed up for which events.
 
 6. How It Works:
-Start the Application: The application loads with a title, a filter option (to filter events by department), and a list of events.
+Launch the software: A title, a list of events, and a filter option (to filter events by department) appear when the program loads.
 
-Filter Events: Users can select a department from the ComboBox, and the application will filter the events based on the selection.
+Filter Events: The application will filter the events according to the department that users select from the ComboBox.
 
-View Event Details: When an event is selected from the list, its details are shown in the event details section.
+View Event Details: The event details section displays the details of the event that has been selected from the list.
 
-Perform Actions: Users can register for events, notify students, and fetch external data using the respective buttons.
+Take Actions: By using the corresponding buttons, users can register for events, alert students, and retrieve external data.
 
 7. User Flow:
-Open the Application: The user sees all available events.
-Filter Events: The user can filter events by department using the dropdown menu.
-Select an Event: The user selects an event from the list to see more details.
-Take Action: The user can register for the event, notify students, or fetch additional data about events.
-This WPF application provides a simple but powerful interface for managing campus events. With further customization and additional features, it can become a comprehensive event management system for Monash University.
+Launch the software: Every available event is visible to the user.
+Filter Events: Using the dropdown menu, the user can filter events by department.
+Choose an Event: To view more information, the user chooses an event from the list.
+Take Action: The user has the option to notify students, register for the event, and retrieve more information about it.
+This WPF program offers a straightforward yet effective interface for organizing events on campus. It has the potential to grow into a feature-rich event management system for Monash University with more modification.
+
